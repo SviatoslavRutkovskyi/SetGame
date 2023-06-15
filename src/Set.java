@@ -1,12 +1,92 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Set {
+    /**
+     * (Passed in) number of initial cards
+     */
+    private final int initCards;
+    /**
+     * ArrayList that contains all possible cards. (81 total)
+     * Does not contain duplicates
+     */
     private ArrayList<Card> deck;
-    public Set() {
+    /**
+     * ArrayList that contains all the cards in the current board.
+     */
+    private ArrayList<Card> board;
+    /**
+     * Random object to draw cards from the deck.
+     */
+    private final Random rand = new Random();
+
+    /**
+     * Sets the default number of cards on the board.
+     * @param initCards initial number of cards on the board.
+     */
+    public Set(int initCards) {
+        this.initCards = initCards;
         init();
     }
+
+    /**
+     * returns a copy of the current board in the form of ArrayList
+     * @return a copy of the current board in the form of ArrayList
+     */
+    public ArrayList<Card> getBoard() {
+        return new ArrayList<>(board);
+    }
+
+
+    /**
+     * Receives 3 cars as parameters, checks if they form a set.
+     * If they do, replaces the cards with new cards from the deck.
+     * If the number of cards is bigger than the initial value, just removes them without replacing.
+     * @param a card 1
+     * @param b card 2
+     * @param c card 3
+     * @return true if the given cards made a set
+     */
+    public boolean callSet(int a, int b, int c) {       // does not work properly if the init number is not divisible by the number of cards added
+        boolean result = isSet(board.get(a), board.get(b), board.get(c));
+        if (result) {
+            int[] cards = new int[]{a, b, c};
+            if (board.size() > initCards) {
+                Arrays.sort(cards);
+                for (int i = cards.length - 1; i >= 0; i--) {
+                    board.remove(cards[i]);
+                }
+            } else {
+                for (int card : cards) {
+                    board.set(card, deck.remove(rand.nextInt(deck.size())));
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Adds a given number of cards to the board
+     * @param cards number of cars to be added
+     * @return true if all the cards were added
+     */
+    public boolean addCards(int cards) {
+        boolean result = true;
+        for (int i = 0; i < cards; i++) {
+            if (!deck.isEmpty()) {
+                board.add(deck.remove(rand.nextInt(deck.size())));
+            } else {
+                System.err.println("DECK HAS ENDED");
+                result = false;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * initializes the deck and the board
+     */
     private void init() {
         deck = new ArrayList<>();
         for (Color color : Color.values()) {
@@ -19,14 +99,20 @@ public class Set {
             }
         }
 //        testSet();
-        HashMap<Integer, Card> board = new HashMap<>();
-        Random rand = new Random();
-        for (int i = 0; i < 9; i++) {
-            int index = rand.nextInt(deck.size());
-            board.put(i, deck.remove(index));
-        }
+        board = new ArrayList<>();
+        addCards(initCards);
 
     }
+
+    /**
+     * gets 3 cards in, checks if they form a set.
+     * If they do returns true.
+     * Does not check for the same card.
+     * @param card1 Card 1
+     * @param card2 Card 2
+     * @param card3 Card 3
+     * @return true if the 3 cards form a set
+     */
     private boolean isSet(Card card1, Card card2, Card card3) {
         return checkProp(card1.color, card2.color, card3.color) &&
                 checkProp(card1.number, card2.number, card3.number) &&
@@ -48,7 +134,11 @@ public class Set {
         }
         return result;
     }
-    private void testSet() {
+
+    /**
+     * Tests the Card class
+     */
+    private void testCards() {
         ArrayList<Card> testDeck = new ArrayList<>(deck);
         int total = 0;
         int sets = 0;
@@ -64,21 +154,17 @@ public class Set {
                                 testDeck.get(k) + "; Set? true");
                     }
                 }
-
             }
         }
         System.out.println("Total combinations: " + total);
         System.out.println("Total sets: " + sets);
         System.out.println("Ratio: " + (sets * 100.0)/total  + "%");
-
-
     }
 
 
-
-
-
-
+    /**
+     * Card class. Card has 4 properties: color, number, shape, and opacity.
+     */
     private static class Card {
         Color color;
         Number number;
@@ -93,7 +179,7 @@ public class Set {
 
         @Override
         public String toString() {
-            return "[" +color.toString() + ", " + number.toString() + ", " +  shape.toString() + ", " + opacity.toString() + "]";
+            return "[" + color.toString() + ", " + number.toString() + ", " +  shape.toString() + ", " + opacity.toString() + "]";
         }
     }
     // enum properties
@@ -107,6 +193,6 @@ public class Set {
         OVAL, WORM, RHOMBUS
     }
     enum Opacity {
-        SOLID, SEMITRANSPARENT, TRANSPARENT
+        SOLID, SEMI, CLEAR
     }
 }

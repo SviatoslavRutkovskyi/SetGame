@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/src/Set.java" afterDir="false" />
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Created Set Class, inner Card class, property enums, method to check if something is a set">
+      <change afterPath="$PROJECT_DIR$/src/SetGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Set.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="979af6d7-9cef-4986-8904-6ed840346ddd" />
+        <option name="url" value="git@github.com:SviatoslavRutkovskyi/SetGame.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="2RD8cyqiatiNSOV6v8e76fKhEFO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -52,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686773374983</updated>
-      <workItem from="1686773376039" duration="5328000" />
+      <workItem from="1686773376039" duration="21034000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>
@@ -61,14 +75,33 @@
       <option name="project" value="LOCAL" />
       <updated>1686773439711</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created Set Class, inner Card class, property enums, method to check if something is a set">
+      <created>1686779683979</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686779683979</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="Created Set Class, inner Card class, property enums, method to check if something is a set" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Set Class, inner Card class, property enums, method to check if something is a set" />
   </component>
 </project>
