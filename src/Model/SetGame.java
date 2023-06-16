@@ -1,15 +1,17 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Game of set. Set the initial number of cards, and try to create sets of cards.
+ * Game of set. Model.Set the initial number of cards, and try to create sets of cards.
  * A set is when 3 cards have all of their properties either match, or be different.
  * Ex. [RED, ONE, RHOMBUS, SEMI], [RED, TWO, WORM, SEMI], [RED, THREE, OVAL, SEMI],
  * Press 0 to get more cards.
  */
 public class SetGame {
 //    private ArrayList board = new ArrayList();
-    SetGame() {
+    public SetGame() {
         init();
     }
     private void init() {
@@ -45,7 +47,7 @@ public class SetGame {
 
         }
     }
-    private void printBoard(ArrayList board) {
+    private void printBoard(ArrayList<Card> board) {
         for (int i = 0; i < board.size(); ) {
             for (int j = 0; j < 3; j++) {
                 if (i < board.size()){

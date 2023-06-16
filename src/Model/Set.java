@@ -1,3 +1,8 @@
+package Model;
+
+import Properties.Color;
+import Properties.Opacity;
+import Properties.Shape;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -90,7 +95,7 @@ public class Set {
     private void init() {
         deck = new ArrayList<>();
         for (Color color : Color.values()) {
-            for (Number number : Number.values()) {
+            for (Properties.Number number : Properties.Number.values()) {
                 for (Shape shape : Shape.values()) {
                     for (Opacity opacity : Opacity.values()) {
                         deck.add(new Card(color, number, shape, opacity));
@@ -114,10 +119,10 @@ public class Set {
      * @return true if the 3 cards form a set
      */
     private boolean isSet(Card card1, Card card2, Card card3) {
-        return checkProp(card1.color, card2.color, card3.color) &&
-                checkProp(card1.number, card2.number, card3.number) &&
-                checkProp(card1.shape, card2.shape, card3.shape) &&
-                checkProp(card1.opacity, card2.opacity, card3.opacity);
+        return checkProp(card1.getColor(), card2.getColor(), card3.getColor()) &&
+                checkProp(card1.getNumber(), card2.getNumber(), card3.getNumber()) &&
+                checkProp(card1.getShape(), card2.getShape(), card3.getShape()) &&
+                checkProp(card1.getOpacity(), card2.getOpacity(), card3.getOpacity());
     }
 
     /**
@@ -146,12 +151,12 @@ public class Set {
             for (int j = i + 1; j < testDeck.size(); j++) {
                 for (int k = j + 1; k < testDeck.size(); k++) {
 //                    System.out.println("Testing Cards: " + testDeck.get(i) + ", " + testDeck.get(j) + ", " +
-//                            testDeck.get(k) + "; Set? " + isSet(testDeck.get(i), testDeck.get(j), testDeck.get(k)));
+//                            testDeck.get(k) + "; Model.Set? " + isSet(testDeck.get(i), testDeck.get(j), testDeck.get(k)));
                     total++;
                     if(isSet(testDeck.get(i), testDeck.get(j), testDeck.get(k))) {
                         sets++;
                         System.out.println("Testing Cards: " + testDeck.get(i) + ", " + testDeck.get(j) + ", " +
-                                testDeck.get(k) + "; Set? true");
+                                testDeck.get(k) + "; Model.Set? true");
                     }
                 }
             }
@@ -161,38 +166,4 @@ public class Set {
         System.out.println("Ratio: " + (sets * 100.0)/total  + "%");
     }
 
-
-    /**
-     * Card class. Card has 4 properties: color, number, shape, and opacity.
-     */
-    private static class Card {
-        Color color;
-        Number number;
-        Shape shape;
-        Opacity opacity;
-        Card(Color color, Number number, Shape shape, Opacity opacity) {
-            this.color = color;
-            this.number = number;
-            this.shape = shape;
-            this.opacity = opacity;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + color.toString() + ", " + number.toString() + ", " +  shape.toString() + ", " + opacity.toString() + "]";
-        }
-    }
-    // enum properties
-    enum Color {
-        GREEN, RED, BLUE
-    }
-    enum Number {
-        ONE, TWO, THREE
-    }
-    enum Shape {
-        OVAL, WORM, RHOMBUS
-    }
-    enum Opacity {
-        SOLID, SEMI, CLEAR
-    }
 }
