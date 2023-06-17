@@ -12,11 +12,16 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
     public SetGUI() {
         super("SET GAME");
 //        setBackground(Color.white);
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
-//        setVisible(true);
-        SetPanel setPanel = new SetPanel();
+//        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(setPanel);
+//        setVisible(true);
+
+        SetPanel setPanel = new SetPanel();
+        add(setPanel, BorderLayout.CENTER);
+        StatPanel statPanel = new StatPanel();
+        add(statPanel, BorderLayout.EAST);
+
         pack();
         setVisible(true);
     }

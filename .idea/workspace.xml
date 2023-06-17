@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Created SetGame class, with a working demo text only version of Set. Added control methods to the Set class to check for set which affects the board, and a method tp add more cards to the board.">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Properties/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Properties/Number.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Properties/Opacity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Properties/Shape.java" afterDir="false" />
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it.">
+      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/StatPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Set.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SetGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SetGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -54,21 +50,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -78,7 +74,8 @@
       <option name="presentableId" value="Default" />
       <updated>1686773374983</updated>
       <workItem from="1686773376039" duration="22383000" />
-      <workItem from="1686863644522" duration="10202000" />
+      <workItem from="1686863644522" duration="11646000" />
+      <workItem from="1686947669297" duration="3888000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>
@@ -101,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686816231479</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it.">
+      <created>1686874638242</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686874638242</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +126,7 @@
     <MESSAGE value="init commit" />
     <MESSAGE value="Created Set Class, inner Card class, property enums, method to check if something is a set" />
     <MESSAGE value="Created SetGame class, with a working demo text only version of Set. Added control methods to the Set class to check for set which affects the board, and a method tp add more cards to the board." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created SetGame class, with a working demo text only version of Set. Added control methods to the Set class to check for set which affects the board, and a method tp add more cards to the board." />
+    <MESSAGE value="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it." />
   </component>
 </project>

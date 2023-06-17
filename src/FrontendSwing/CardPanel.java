@@ -2,10 +2,13 @@ package FrontendSwing;
 
 import Model.Card;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.event.MouseInputAdapter;
 
 public class CardPanel extends JPanel {
 
@@ -17,6 +20,7 @@ public class CardPanel extends JPanel {
         super();
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        addMouseListener(new MouseClickListener());
     }
     public void setMyCard(Card card) {
         myCard = card;
@@ -120,6 +124,14 @@ public class CardPanel extends JPanel {
         }
 
 //        g2d.draw
+    }
+    class MouseClickListener extends MouseInputAdapter {
+
+        @Override
+        public void mouseClicked(final MouseEvent theEvent) {
+            setBackground(Color.CYAN);
+        }
+
     }
 }
 
