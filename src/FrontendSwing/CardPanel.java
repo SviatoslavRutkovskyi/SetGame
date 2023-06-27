@@ -1,24 +1,36 @@
 package FrontendSwing;
 
+import static Properties.SetProp.*;
+
 import Model.Card;
+import Properties.SetProp;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
-public class CardPanel extends JPanel {
+public class CardPanel extends JPanel implements PropertyChangeListener{
 
     private static final int WIDTH = 200;
     private static final int HEIGHT = 100;
     private Card myCard = null;
 
-    public CardPanel() {
+    private final int id;
+
+    private boolean selected;
+
+    private final PropertyChangeSupport myPcs;
+
+    public CardPanel(int idNum) {
         super();
-        setBackground(Color.WHITE);
+        id = idNum;
+        myPcs = new PropertyChangeSupport(this);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         addMouseListener(new MouseClickListener());
     }
@@ -32,6 +44,11 @@ public class CardPanel extends JPanel {
 
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
+        if (selected) {
+            setBackground(Color.CYAN);
+        } else {
+            setBackground(Color.WHITE);
+        }
 
         switch (myCard.getColor()) {
             case GREEN -> g2d.setPaint(Color.GREEN);
@@ -45,7 +62,6 @@ public class CardPanel extends JPanel {
         int yOffset = 20;
         int shapeNum = 0;
         switch (myCard.getNumber()){
-
             case ONE -> {
                 xOffset = 85;
                 shapeNum = 1;
@@ -57,7 +73,6 @@ public class CardPanel extends JPanel {
             case THREE -> shapeNum = 3;
         }
         switch (myCard.getShape()){
-
             case OVAL -> {
                 for (int i = 0; i < shapeNum; i++) {
                     myShape = new Ellipse2D.Float(xOffset,yOffset,30,60);
@@ -106,7 +121,6 @@ public class CardPanel extends JPanel {
 
                 for (Shape shape : myShapes) {
                     g2d.draw(shape);
-
                 }
                 GradientPaint gp4 = new GradientPaint(0.5f, 25,
                         Color.WHITE, 2, 25, g2d.getColor(), true);
@@ -122,16 +136,32 @@ public class CardPanel extends JPanel {
                 }
             }
         }
-
 //        g2d.draw
     }
-    class MouseClickListener extends MouseInputAdapter {
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        final SetProp prop = SetProp.valueOf(evt.getPropertyName());
+        if (prop == SetProp.UPDATE_BOARD) {
+            selected = false;
+            repaint();
+        }
+    }
+
+    class MouseClickListener extends MouseInputAdapter {
         @Override
         public void mouseClicked(final MouseEvent theEvent) {
-            setBackground(Color.CYAN);
+            if (selected) {
+                setBackground(Color.WHITE);
+            } else {
+                setBackground(Color.CYAN);
+            }
+            selected = !selected;
+            myPcs.firePropertyChange(CARD_SELECT.toString(), selected, id);
         }
-
+    }
+    public void addPropertyChangeListener(final PropertyChangeListener theListener) {
+        myPcs.addPropertyChangeListener(theListener);
     }
 }
 

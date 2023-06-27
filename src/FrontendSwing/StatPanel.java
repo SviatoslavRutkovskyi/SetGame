@@ -1,25 +1,30 @@
 package FrontendSwing;
 
-import Model.Card;
-import Model.Set;
+import static Properties.SetProp.ADD_CARDS;
+
 import java.awt.*;
-import java.util.ArrayList;
+
+import java.beans.PropertyChangeSupport;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class StatPanel extends JPanel{
-    private ArrayList<Card> myBoard;
+    private final PropertyChangeSupport myPcs;
     private static final int WIDTH = 700;
     private static final int HEIGHT = 400;
 
     public StatPanel() {
         super();
-        Set set = new Set(9);
-        myBoard = set.getBoard();
+        myPcs = new PropertyChangeSupport(this);
         setBackground(Color.RED);
        // setPreferredSize(new Dimension(WIDTH, HEIGHT));
         init();
     }
     private void init() {
+        JButton addCards = new JButton("ADD CARDS");
+        addCards.addActionListener(e -> myPcs.firePropertyChange(ADD_CARDS.toString(), null, null));
+        add(addCards);
     }
     @Override
     public void paintComponent(final Graphics theGraphics) {

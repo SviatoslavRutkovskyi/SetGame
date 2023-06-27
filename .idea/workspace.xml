@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it.">
-      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/StatPanel.java" afterDir="false" />
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Small Layout changes, added StatPanel (not properly implemented). Added mouse click listener">
+      <change afterPath="$PROJECT_DIR$/src/Properties/SetProp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -75,7 +75,8 @@
       <updated>1686773374983</updated>
       <workItem from="1686773376039" duration="22383000" />
       <workItem from="1686863644522" duration="11646000" />
-      <workItem from="1686947669297" duration="3888000" />
+      <workItem from="1686947669297" duration="4642000" />
+      <workItem from="1687888671088" duration="7608000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686874638242</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Small Layout changes, added StatPanel (not properly implemented). Added mouse click listener">
+      <created>1686977950452</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686977950453</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +135,7 @@
     <MESSAGE value="Created Set Class, inner Card class, property enums, method to check if something is a set" />
     <MESSAGE value="Created SetGame class, with a working demo text only version of Set. Added control methods to the Set class to check for set which affects the board, and a method tp add more cards to the board." />
     <MESSAGE value="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it." />
+    <MESSAGE value="Small Layout changes, added StatPanel (not properly implemented). Added mouse click listener" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small Layout changes, added StatPanel (not properly implemented). Added mouse click listener" />
   </component>
 </project>
