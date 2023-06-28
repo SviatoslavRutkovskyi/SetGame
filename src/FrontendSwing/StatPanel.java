@@ -4,6 +4,7 @@ import static Properties.SetProp.ADD_CARDS;
 
 import java.awt.*;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import javax.swing.JButton;
@@ -20,6 +21,9 @@ public class StatPanel extends JPanel{
         setBackground(Color.RED);
        // setPreferredSize(new Dimension(WIDTH, HEIGHT));
         init();
+    }
+    public void addPropertyChangeListener(final PropertyChangeListener theListener) {
+        myPcs.addPropertyChangeListener(theListener);
     }
     private void init() {
         JButton addCards = new JButton("ADD CARDS");

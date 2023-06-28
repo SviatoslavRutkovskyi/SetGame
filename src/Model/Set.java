@@ -2,7 +2,10 @@ package Model;
 
 import Properties.Color;
 import Properties.Opacity;
+import Properties.SetProp;
 import Properties.Shape;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -25,7 +28,7 @@ public class Set {
      * Random object to draw cards from the deck.
      */
     private final Random rand = new Random();
-
+    private final PropertyChangeSupport myPcs = new PropertyChangeSupport(this);
     /**
      * Sets the default number of cards on the board.
      * @param initCards initial number of cards on the board.
@@ -66,6 +69,7 @@ public class Set {
                 for (int card : cards) {
                     board.set(card, deck.remove(rand.nextInt(deck.size())));
                 }
+                myPcs.firePropertyChange(SetProp.UPDATE_BOARD.toString(), null, new ArrayList<>(board));
             }
         }
         return result;
@@ -86,7 +90,12 @@ public class Set {
                 result = false;
             }
         }
+        myPcs.firePropertyChange(SetProp.UPDATE_BOARD.toString(), null, new ArrayList<>(board));
         return result;
+    }
+
+    public void addPropertyChangeListener(final PropertyChangeListener theListener) {
+        myPcs.addPropertyChangeListener(theListener);
     }
 
     /**
