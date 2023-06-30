@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Added ability to call a set by selecting 3 cards(automatic). started work on adding more cards.">
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Moved setPanel class into SetGUI, added ability to add cards, improved property change listeners">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetPanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/StatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/StatPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Properties/SetProp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Properties/SetProp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,9 @@
       <workItem from="1686863644522" duration="11646000" />
       <workItem from="1686947669297" duration="4642000" />
       <workItem from="1687888671088" duration="11280000" />
-      <workItem from="1687926366765" duration="5762000" />
+      <workItem from="1687926366765" duration="6630000" />
+      <workItem from="1687977791179" duration="1414000" />
+      <workItem from="1688158954144" duration="7925000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>
@@ -123,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687897309287</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Moved setPanel class into SetGUI, added ability to add cards, improved property change listeners">
+      <created>1687975481622</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687975481622</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +157,7 @@
     <MESSAGE value="Made Card class public, added getter methods. Moved enums to their own classes, made them public. Started working of the GUI for the Game, created a class that draws a card that is given to it." />
     <MESSAGE value="Small Layout changes, added StatPanel (not properly implemented). Added mouse click listener" />
     <MESSAGE value="Added ability to call a set by selecting 3 cards(automatic). started work on adding more cards." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to call a set by selecting 3 cards(automatic). started work on adding more cards." />
+    <MESSAGE value="Moved setPanel class into SetGUI, added ability to add cards, improved property change listeners" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved setPanel class into SetGUI, added ability to add cards, improved property change listeners" />
   </component>
 </project>

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.RoundRectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -19,10 +20,18 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
 
     private static final int WIDTH = 200;
     private static final int HEIGHT = 100;
+    private final Shape borderShape = new RoundRectangle2D.Double(0,0,200,100,20,20);
+    /**
+     * Card that is represented by this class.
+     */
     private Card myCard = null;
-
+    /**
+     * Card id.
+     */
     private final int id;
-
+    /**
+     * Boolean that shows if card is selected or not.
+     */
     private boolean selected;
 
     private final PropertyChangeSupport myPcs;
@@ -34,9 +43,19 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         addMouseListener(new MouseClickListener());
     }
+
+    /**
+     * Sets a card to this class.
+     * @param card card set to this class.
+     */
     public void setMyCard(Card card) {
         myCard = card;
     }
+
+    /**\
+     * Paints the panel according to the card that is passed in.
+     * @param theGraphics the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(final Graphics theGraphics) {
         if (myCard == null) {
@@ -48,9 +67,10 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
             if (selected) {
-                setBackground(Color.CYAN);
-            } else {
-                setBackground(Color.WHITE);
+//                setBackground(Color.CYAN);
+                g2d.setColor(Color.YELLOW);
+                g2d.setStroke(new BasicStroke(10));
+                g2d.draw(borderShape);
             }
 
             switch (myCard.getColor()) {
@@ -143,25 +163,34 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
 //        g2d.draw
     }
 
+    /**
+     * Resets the card selection if a set is found.
+     * @param evt A PropertyChangeEvent object describing the event source
+     *          and the property that has changed.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final SetProp prop = SetProp.valueOf(evt.getPropertyName());
-        if (prop == SetProp.UPDATE_BOARD) {
+        if (prop == SET_FOUND) {
             selected = false;
-            System.out.println("Repainting card at id: " + id);
+//            System.out.println("Repainting card at id: " + id);
             repaint();
         }
     }
 
+    /**
+     * Flips the selected boolean when clicked.
+     */
     class MouseClickListener extends MouseInputAdapter {
         @Override
         public void mouseClicked(final MouseEvent theEvent) {
-            if (selected) {
-                setBackground(Color.WHITE);
-            } else {
-                setBackground(Color.CYAN);
-            }
+//            if (selected) {
+//                setBackground(Color.WHITE);
+//            } else {
+//                setBackground(Color.CYAN);
+//            }
             selected = !selected;
+            repaint();
             myPcs.firePropertyChange(CARD_SELECT.toString(), selected, id);
         }
     }

@@ -69,8 +69,8 @@ public class Set {
                 for (int card : cards) {
                     board.set(card, deck.remove(rand.nextInt(deck.size())));
                 }
-                myPcs.firePropertyChange(SetProp.UPDATE_BOARD.toString(), null, new ArrayList<>(board));
             }
+            myPcs.firePropertyChange(SetProp.SET_FOUND.toString(), null, new ArrayList<>(board));
         }
         return result;
     }
@@ -90,7 +90,7 @@ public class Set {
                 result = false;
             }
         }
-        myPcs.firePropertyChange(SetProp.UPDATE_BOARD.toString(), null, new ArrayList<>(board));
+        //myPcs.firePropertyChange(SetProp.UPDATE_BOARD.toString(), null, new ArrayList<>(board));
         return result;
     }
 
