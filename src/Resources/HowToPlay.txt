@@ -1,0 +1,8 @@
+SET GAME RULES
+Select 3 cards that form a set.
+Each card has 4 properties: Shape, Color, Opacity, and Number.
+Each property has 3 possible options; Ex: Color can be Red, Green, and Blue.
+Cards form a set if each property is unique to the card or shared across other 2 cards. Ex: 3 cards have same shape and number, but different color and opacity.
+Every card is unique, and once you run out of the deck the game ends.
+If you can't find a set on the board, you can add more cards to help you.
+Good luck, and have fun!

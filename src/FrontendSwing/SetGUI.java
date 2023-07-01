@@ -9,8 +9,12 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SetGUI extends JFrame implements PropertyChangeListener {
@@ -42,6 +46,9 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
      * Currently unused.
      */
     private final PropertyChangeSupport myPcs;
+
+    /** How to play JFrame. */
+    private JFrame myHowToPlayOption;
     public SetGUI() {
         super("SET GAME");
 //        setBackground(Color.white);
@@ -49,6 +56,11 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        setVisible(true);
+        setJMenuBar(new SetFrameMenu(this));
+        setMenuOptions();
+
+
+
         set = new Set(9);
         myBoard = set.getBoard();
         myPcs = new PropertyChangeSupport(this);
@@ -58,6 +70,7 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         statPanel.addPropertyChangeListener(this);
         set.addPropertyChangeListener(statPanel);
         add(statPanel, BorderLayout.EAST);
+        setResizable(false);
 
         pack();
         setVisible(true);
@@ -85,6 +98,25 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         return setPanel;
     }
 
+    private void setMenuOptions() {
+        final int howToWidth = 300;
+        final int howToHeight = 350;
+
+        //setup how to play menu
+        myHowToPlayOption = new JFrame("How To Play");
+        final JLabel howToPlay = new JLabel(textReader("src/Resources/HowToPlay.txt"));
+        myHowToPlayOption.setSize(howToWidth, howToHeight);
+        myHowToPlayOption.setLocationRelativeTo(null);
+        myHowToPlayOption.setResizable(false);
+        myHowToPlayOption.add(howToPlay);
+    }
+
+    /**
+     * Calls public visibility method in how to play Jframe.
+     */
+    public void makeHowToPlayVisible() {
+        myHowToPlayOption.setVisible(true);
+    }
 
     /**
      * Listens to cardPanel classes, and statPanel and controls set class accordingly.
@@ -138,6 +170,25 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
             }
 //            myPcs.firePropertyChange(UPDATE_BOARD.toString(), null, null);
             pack();
+        }
+    }
+    private String textReader(final String theFilePath)  {
+        final StringBuilder fileData = new StringBuilder();
+        final String htmlBreak = "<html>";
+        final String brBreak = "<br/<";
+        try {
+            final File file = new File(theFilePath);
+            final Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                final String textLine = scan.nextLine();
+                fileData.append(htmlBreak);
+                fileData.append(textLine);
+                fileData.append(brBreak);
+            }
+            scan.close();
+            return fileData.toString();
+        } catch (final FileNotFoundException e) {
+            throw new RuntimeException();
         }
     }
 }

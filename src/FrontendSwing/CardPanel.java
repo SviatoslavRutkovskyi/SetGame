@@ -184,11 +184,6 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
     class MouseClickListener extends MouseInputAdapter {
         @Override
         public void mouseClicked(final MouseEvent theEvent) {
-//            if (selected) {
-//                setBackground(Color.WHITE);
-//            } else {
-//                setBackground(Color.CYAN);
-//            }
             selected = !selected;
             repaint();
             myPcs.firePropertyChange(CARD_SELECT.toString(), selected, id);

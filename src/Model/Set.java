@@ -60,12 +60,12 @@ public class Set {
         boolean result = isSet(board.get(a), board.get(b), board.get(c));
         if (result) {
             int[] cards = new int[]{a, b, c};
-            if (board.size() > initCards) {
+            if (board.size() > initCards || deck.size() == 0) {
                 Arrays.sort(cards);
                 for (int i = cards.length - 1; i >= 0; i--) {
                     board.remove(cards[i]);
                 }
-            } else {
+            } else{
                 for (int card : cards) {
                     board.set(card, deck.remove(rand.nextInt(deck.size())));
                 }
