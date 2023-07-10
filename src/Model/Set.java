@@ -70,7 +70,7 @@ public class Set {
                     board.set(card, deck.remove(rand.nextInt(deck.size())));
                 }
             }
-            myPcs.firePropertyChange(SetProp.SET_FOUND.toString(), null, new ArrayList<>(board));
+            myPcs.firePropertyChange(SetProp.SET_FOUND.toString(), deck.size(), new ArrayList<>(board));
         }
         return result;
     }

@@ -18,8 +18,11 @@ public class StatPanel extends JPanel implements PropertyChangeListener{
     private final PropertyChangeSupport myPcs;
     private static final int WIDTH = 700;
     private static final int HEIGHT = 400;
-    private JLabel setCount;
+    private JLabel setCountLabel;
+    private JLabel cardCountLabel;
     private int setNum = 0;
+    private int cardNum = 72;
+
 
     public StatPanel() {
         super();
@@ -32,11 +35,25 @@ public class StatPanel extends JPanel implements PropertyChangeListener{
     private void init() {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(0,1,10,10));
+
         JButton addCards = new JButton("ADD CARDS");
-        addCards.addActionListener(e -> myPcs.firePropertyChange(ADD_CARDS.toString(), null, null));
+        addCards.addActionListener(e -> {
+            myPcs.firePropertyChange(ADD_CARDS.toString(), null, null);
+            if (cardNum > 0) {
+                cardNum -= 3;
+            }
+            cardCountLabel.setText("Cards in deck: " + cardNum);
+        });
         mainPanel.add(addCards);
-        setCount = new JLabel("Sets: " + setNum);
-        mainPanel.add(setCount);
+
+
+        setCountLabel = new JLabel("Sets: " + setNum);
+        mainPanel.add(setCountLabel);
+
+        cardCountLabel = new JLabel("Cards in deck: " + cardNum);
+        mainPanel.add(cardCountLabel);
+
+
         mainPanel.setBorder(BorderFactory.createLineBorder(new Color(213, 162, 232), 10));
         add(mainPanel, BorderLayout.CENTER);
     }
@@ -58,7 +75,9 @@ public class StatPanel extends JPanel implements PropertyChangeListener{
         final SetProp prop = SetProp.valueOf(evt.getPropertyName());
         if (prop == SET_FOUND) {
             setNum += 1;
-            setCount.setText("Sets: " + setNum);
+            setCountLabel.setText("Sets: " + setNum);
+            cardNum = (int) evt.getOldValue();
+            cardCountLabel.setText("Cards in deck: " + cardNum);
         }
     }
 }
