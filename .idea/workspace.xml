@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Cleaned up properties, added set counter, adjusted visuals">
-      <change afterPath="$PROJECT_DIR$/src/FrontendSwing/SetFrameMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Resources/HowToPlay.txt" afterDir="false" />
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Added menu with HowToPlay tab. Fixed a bug that occurred when running out of cards.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/SetGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Set.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +78,8 @@
       <workItem from="1687926366765" duration="6630000" />
       <workItem from="1687977791179" duration="1414000" />
       <workItem from="1688158954144" duration="11730000" />
+      <workItem from="1688607166181" duration="13000" />
+      <workItem from="1689018292462" duration="3227000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>

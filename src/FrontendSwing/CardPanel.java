@@ -6,9 +6,7 @@ import Model.Card;
 import Properties.SetProp;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -104,22 +102,18 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
                     }
                 }
                 case WORM -> {
+
                     for (int i = 0; i < shapeNum; i++) {
-                        myShape = new Arc2D.Double(xOffset, yOffset, 30, 30, 50, 220,
-                                Arc2D.OPEN);
-                        myShapes.add(myShape);
-                        myShape = new Arc2D.Double(xOffset - 7, yOffset + 29, 30, 30, 310, 130,
-                                Arc2D.OPEN);
-                        myShapes.add(myShape);
-                        myShape = new Arc2D.Double(xOffset + 20, yOffset, 30, 30, 130, 140,
-                                Arc2D.OPEN);
-                        myShapes.add(myShape);
-                        myShape = new Arc2D.Double(xOffset + 13, yOffset + 29, 30, 30, 230, 210,
-                                Arc2D.OPEN);
-                        myShapes.add(myShape);
+                        Path2D squiggle = new Path2D.Double(new Line2D.Double(xOffset + 8, yOffset, xOffset + 11, yOffset));
+                        squiggle.curveTo(xOffset + 48, yOffset + 10, xOffset + 8,
+                                yOffset + 35, xOffset + 28, yOffset + 50);
+                        squiggle.curveTo(xOffset + 38, yOffset + 70, xOffset - 7,
+                                yOffset + 60, xOffset + 3, yOffset + 40);
+                        squiggle.curveTo(xOffset + 18, yOffset + 15,xOffset - 12,
+                                yOffset + 5,xOffset + 8, yOffset);
+                        myShapes.add(squiggle);
                         xOffset += 50;
                     }
-
                 }
                 case RHOMBUS -> {
 //                myShape = new Rectangle(10, 10, 30, 50);
