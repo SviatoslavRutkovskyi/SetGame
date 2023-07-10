@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Added menu with HowToPlay tab. Fixed a bug that occurred when running out of cards.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f3c98677-23a0-4650-9423-347ad03d6b81" name="Changes" comment="Fixed the worm shape in CardPanel">
       <change beforePath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrontendSwing/CardPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +78,7 @@
       <workItem from="1687977791179" duration="1414000" />
       <workItem from="1688158954144" duration="11730000" />
       <workItem from="1688607166181" duration="13000" />
-      <workItem from="1689018292462" duration="3227000" />
+      <workItem from="1689018292462" duration="4045000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1686773439711</created>
@@ -137,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688168553092</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed the worm shape in CardPanel">
+      <created>1689021741496</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689021741496</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +169,7 @@
     <MESSAGE value="Added ability to call a set by selecting 3 cards(automatic). started work on adding more cards." />
     <MESSAGE value="Moved setPanel class into SetGUI, added ability to add cards, improved property change listeners" />
     <MESSAGE value="Cleaned up properties, added set counter, adjusted visuals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up properties, added set counter, adjusted visuals" />
+    <MESSAGE value="Fixed the worm shape in CardPanel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the worm shape in CardPanel" />
   </component>
 </project>
