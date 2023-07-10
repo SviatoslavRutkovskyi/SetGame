@@ -139,9 +139,9 @@ public class CardPanel extends JPanel implements PropertyChangeListener{
                     for (Shape shape : myShapes) {
                         g2d.draw(shape);
                     }
-                    GradientPaint gp4 = new GradientPaint(0.5f, 25,
-                            Color.WHITE, 2, 25, g2d.getColor(), true);
-                    gp4 = new GradientPaint(0, 0,
+//                    GradientPaint gp4 = new GradientPaint(0.5f, 25,
+//                            Color.WHITE, 2, 25, g2d.getColor(), true);
+                    GradientPaint gp4 = new GradientPaint(0, 0,
                             Color.WHITE, 0, 1, g2d.getColor(), true);
                     g2d.setPaint(gp4);
                     for (Shape shape : myShapes) {
