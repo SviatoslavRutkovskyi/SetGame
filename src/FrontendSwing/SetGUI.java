@@ -13,9 +13,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.*;
 
 public class SetGUI extends JFrame implements PropertyChangeListener {
 
@@ -49,6 +48,8 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
 
     /** How to play JFrame. */
     private JFrame myHowToPlayOption;
+
+    private JButton checkSetCount;
     public SetGUI() {
         super("SET GAME");
 //        setBackground(Color.white);
@@ -58,7 +59,7 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
 //        setVisible(true);
         setJMenuBar(new SetFrameMenu(this));
         setMenuOptions();
-
+        setResizable(false);
 
 
         set = new Set(9);
@@ -66,13 +67,27 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         myPcs = new PropertyChangeSupport(this);
         setPanel = initSetPanel();
         add(setPanel, BorderLayout.CENTER);
+
+        JPanel sidePanel = new JPanel();
+        sidePanel.setLayout(new BorderLayout());
+
+        JPanel controlPanel = createControlPanel();
+        sidePanel.add(controlPanel, BorderLayout.NORTH);
+
         StatPanel statPanel = new StatPanel();
-        statPanel.addPropertyChangeListener(this);
+        myPcs.addPropertyChangeListener(statPanel);
         set.addPropertyChangeListener(statPanel);
-        add(statPanel, BorderLayout.EAST);
-        setResizable(false);
+        sidePanel.add(statPanel, BorderLayout.CENTER);
+
+        add(sidePanel, BorderLayout.EAST);
+
+
+
+
+
 
         pack();
+
         setVisible(true);
     }
 
@@ -96,6 +111,45 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         }
 
         return setPanel;
+    }
+    private JPanel createControlPanel() {
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new GridLayout(0,1,10,10));
+//        controlPanel.setBackground(new Color(213, 162, 232));
+        controlPanel.setBorder(BorderFactory.createLineBorder(new Color(213, 162, 232), 10));
+
+        AtomicInteger setCount = new AtomicInteger();
+
+        JButton addCards = new JButton("ADD CARDS");
+        addCards.setPreferredSize(new Dimension(120,75));
+        addCards.addActionListener(e -> {
+            set.addCards(3);
+            myBoard = set.getBoard();
+            while (myBoard.size() > cardPanels.size()){
+                CardPanel newCard = new CardPanel(cardPanels.size());
+                newCard.setMyCard(myBoard.get(cardPanels.size()));
+                newCard.addPropertyChangeListener(this);
+                set.addPropertyChangeListener(newCard);
+                setPanel.add(newCard);
+                cardPanels.add(newCard);
+                myPcs.addPropertyChangeListener(newCard);
+            }
+
+            checkSetCount.setText("CHECK SETS");
+            myPcs.firePropertyChange(ADD_CARDS.toString(), null, null);
+            pack();
+        });
+        checkSetCount = new JButton("CHECK SETS");
+        checkSetCount.setPreferredSize(new Dimension(120,75));
+        checkSetCount.addActionListener(e -> {
+            setCount.set(set.findSets());
+            checkSetCount.setText(setCount + " SETS");
+
+        });
+        controlPanel.add(addCards);
+        controlPanel.add(checkSetCount);
+        setVisible(true);
+        return controlPanel;
     }
 
     private void setMenuOptions() {
@@ -131,6 +185,7 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         final SetProp prop = SetProp.valueOf(evt.getPropertyName());
 //        System.out.println("Property Change called, selected: " + evt.getOldValue() + " id: " + evt.getNewValue());
         if (prop == CARD_SELECT) {
+
             if (evt.getOldValue().equals(true)) {
                 myCardSet.add((int) evt.getNewValue());
             } else {
@@ -140,6 +195,9 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
             }
                 if (myCardSet.size() == 3) {
                     if (set.callSet(myCardSet.get(0), myCardSet.get(1), myCardSet.get(2))) {
+
+                        checkSetCount.setText("CHECK SETS");
+
 //                        System.out.println(myCardSet);
                         myCardSet.clear();
                         myBoard = set.getBoard();
@@ -155,21 +213,6 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
                     }
                 }
 
-        } else if (prop == ADD_CARDS) {
-            setBackground(Color.GREEN);
-            set.addCards(3);
-            myBoard = set.getBoard();
-            while (myBoard.size() > cardPanels.size()){
-                CardPanel newCard = new CardPanel(cardPanels.size());
-                newCard.setMyCard(myBoard.get(cardPanels.size()));
-                newCard.addPropertyChangeListener(this);
-                set.addPropertyChangeListener(newCard);
-                setPanel.add(newCard);
-                cardPanels.add(newCard);
-                myPcs.addPropertyChangeListener(newCard);
-            }
-//            myPcs.firePropertyChange(UPDATE_BOARD.toString(), null, null);
-            pack();
         }
     }
     private String textReader(final String theFilePath)  {

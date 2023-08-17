@@ -10,7 +10,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -36,15 +35,6 @@ public class StatPanel extends JPanel implements PropertyChangeListener{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(0,1,10,10));
 
-        JButton addCards = new JButton("ADD CARDS");
-        addCards.addActionListener(e -> {
-            myPcs.firePropertyChange(ADD_CARDS.toString(), null, null);
-            if (cardNum > 0) {
-                cardNum -= 3;
-            }
-            cardCountLabel.setText("Cards in deck: " + cardNum);
-        });
-        mainPanel.add(addCards);
 
 
         setCountLabel = new JLabel("Sets: " + setNum);
@@ -78,6 +68,11 @@ public class StatPanel extends JPanel implements PropertyChangeListener{
             setCountLabel.setText("Sets: " + setNum);
             cardNum = (int) evt.getOldValue();
             cardCountLabel.setText("Cards in deck: " + cardNum);
+        } else if (prop == ADD_CARDS) {
+            if (cardNum > 0) {
+                cardNum -= 3;
+                cardCountLabel.setText("Cards in deck: " + cardNum);
+            }
         }
     }
 }

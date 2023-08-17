@@ -97,6 +97,19 @@ public class Set {
     public void addPropertyChangeListener(final PropertyChangeListener theListener) {
         myPcs.addPropertyChangeListener(theListener);
     }
+    public int findSets() {
+        int count = 0;
+        for (int i = 0; i < board.size() - 2; i++) {
+            for (int j = i + 1; j < board.size() - 1; j++) {
+                for (int k = j + 1; k < board.size(); k++) {
+                    if (isSet(board.get(i),board.get(j),board.get(k))){
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
 
     /**
      * initializes the deck and the board
