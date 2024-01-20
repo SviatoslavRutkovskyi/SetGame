@@ -1,4 +1,4 @@
-package FrontendSwing;
+ package FrontendSwing;
 
 import static Properties.SetProp.*;
 
@@ -66,7 +66,11 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         myBoard = set.getBoard();
         myPcs = new PropertyChangeSupport(this);
         setPanel = initSetPanel();
+
+
+
         add(setPanel, BorderLayout.CENTER);
+//        add(new FindThirdSet(), BorderLayout.CENTER);
 
         JPanel sidePanel = new JPanel();
         sidePanel.setLayout(new BorderLayout());
@@ -80,11 +84,6 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
         sidePanel.add(statPanel, BorderLayout.CENTER);
 
         add(sidePanel, BorderLayout.EAST);
-
-
-
-
-
 
         pack();
 
@@ -153,17 +152,18 @@ public class SetGUI extends JFrame implements PropertyChangeListener {
     }
 
     private void setMenuOptions() {
-        final int howToWidth = 300;
-        final int howToHeight = 350;
+        final int howToWidth = 500;
+        final int howToHeight = 500;
 
         //setup how to play menu
         myHowToPlayOption = new JFrame("How To Play");
         final JLabel howToPlay = new JLabel(textReader("src/Resources/HowToPlay.txt"));
+        howToPlay.setFont(new Font(Font.SERIF, Font.PLAIN,  20));
         myHowToPlayOption.setSize(howToWidth, howToHeight);
         myHowToPlayOption.setLocationRelativeTo(null);
         myHowToPlayOption.setResizable(false);
         myHowToPlayOption.add(howToPlay);
-    }
+       }
 
     /**
      * Calls public visibility method in how to play Jframe.

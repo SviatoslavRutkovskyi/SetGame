@@ -12,7 +12,7 @@ public class Card {
     private final Properties.Number number;
     private final Shape shape;
     private final Opacity opacity;
-    Card(Color color, Properties.Number number, Shape shape, Opacity opacity) {
+    public Card(Color color, Properties.Number number, Shape shape, Opacity opacity) {
         this.color = color;
         this.number = number;
         this.shape = shape;

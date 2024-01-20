@@ -60,12 +60,12 @@ public class Set {
         boolean result = isSet(board.get(a), board.get(b), board.get(c));
         if (result) {
             int[] cards = new int[]{a, b, c};
-            if (board.size() > initCards || deck.size() == 0) {
+            if (board.size() > initCards || deck.isEmpty()) {
                 Arrays.sort(cards);
                 for (int i = cards.length - 1; i >= 0; i--) {
                     board.remove(cards[i]);
                 }
-            } else{
+            } else {
                 for (int card : cards) {
                     board.set(card, deck.remove(rand.nextInt(deck.size())));
                 }
@@ -74,6 +74,7 @@ public class Set {
         }
         return result;
     }
+
 
     /**
      * Adds a given number of cards to the board
@@ -140,7 +141,7 @@ public class Set {
      * @param card3 Card 3
      * @return true if the 3 cards form a set
      */
-    private boolean isSet(Card card1, Card card2, Card card3) {
+    public boolean isSet(Card card1, Card card2, Card card3) {
         return checkProp(card1.getColor(), card2.getColor(), card3.getColor()) &&
                 checkProp(card1.getNumber(), card2.getNumber(), card3.getNumber()) &&
                 checkProp(card1.getShape(), card2.getShape(), card3.getShape()) &&
